@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MovieCustomerMvcAppWithAuthentication.Models.Movie>
+@{
+    ViewBag.Title = "MovInd";
+}
+
+<h2>Movies Details</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>MovieName</th>
+            <th>Genre</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Name</td>
+                <td>@customer.Genre</td>
+            </tr>
+        }
+    </tbody>
+</table>
