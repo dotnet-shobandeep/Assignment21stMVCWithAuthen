@@ -4,22 +4,31 @@
 }
 
 <h2>Customer List</h2>
-<table class="table table-bordered table-striped" >
-    <thead>
-        <tr>
-            <th>CustomerName</th>
-            <th>DiscountRate</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var customer in Model)
-        {
+@if (!Model.Any())
+{
+    <p>No Customer Yet</p>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
             <tr>
-                <td>@Html.ActionLink(customer.Name,"Details","Customers",new { id = customer.Id },null) </td>
-                <td>@customer.MembershipType.DiscountRate%</td>
+                <th>CustomerName</th>
+                <th>DiscountRate</th>
+
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+            <tr>
+                <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null) </td>
+                <td>@customer.MembershipType.DiscountRate%</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = customer.Id }, new { @class = "btn btn-success" })</td>
+                <td>@Html.ActionLink("Delete", "DeleteC", new { id = customer.Id }, new { @class = "btn btn-success" })</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
 
